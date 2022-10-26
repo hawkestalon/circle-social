@@ -17,4 +17,17 @@ export class UserService {
       data,
     });
   }
+
+  public async deleteUser(
+    uniqueInput: Prisma.UserWhereUniqueInput,
+  ): Promise<User> {
+    return this.prismaService.user.delete({ where: uniqueInput });
+  }
+
+  public async updateUser(
+    uniqueInput: Prisma.UserWhereUniqueInput,
+    data: Prisma.UserUpdateInput,
+  ): Promise<User> {
+    return this.prismaService.user.update({ where: uniqueInput, data });
+  }
 }
